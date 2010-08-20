@@ -1,44 +1,21 @@
 class Vehicle
+
+  DEGREES = {'N' => 0, 'E' => 90, 'S' => 180,'W' => 270}
+  TURNS = {'R' => 90, 'L' => -90}
+
   attr_accessor :color, :make, :model
   
   def initialize(color, make, model)
     @color = color
     @make = make
     @model = model
-  end
-  
-end
-
-
-class Automobile < Vehicle
-  
-  DEGREES = {'N' => 0, 'E' => 90, 'S' => 180,'W' => 270}
-  TURNS = {'R' => 90, 'L' => -90}
-  
-  def initialize(*args)
-    @gas_current = 11
-    @gas_capacity = 11
-    @mileage = 22
     @heading = 0 
     @position = [0, 0]
-    super(*args)
   end
 
-  def to_s
-    "I am a #{@color} #{@make} #{model}. I am at #{@position}. I have #{@gas_current} gallons of fuel remaining."
-  end
-  
   def drive(distance)
-    drive_cap = @gas_current * @mileage
-    if drive_cap < distance
-      @gas_current=0
-      update_position(drive_cap)
-      "I did my best! We went #{drive_cap} miles before the tank was emptied."
-    else
-      @gas_current -= distance/@mileage.to_f
-      update_position(distance)
-      "You have #{@gas_current} gallons of gas left."
-    end
+    update_position(distance)
+    "Drove #{distance} mile(s)"
   end
 
   def update_position(distance)
@@ -85,12 +62,42 @@ class Automobile < Vehicle
     end
   end
 
-end #class
+end
 
+module GasPowered
 
-class Car < Automobile
+  def initialize(*args)
+    @gas_current = 11
+    @gas_capacity = 11
+    @mileage = 22
+    super(*args)
+  end
+
+  def drive(distance)
+    drive_cap = @gas_current * @mileage
+    if drive_cap < distance
+      @gas_current=0
+      update_position(drive_cap)
+      "I did my best! We went #{drive_cap} miles before the tank was emptied."
+    else
+      @gas_current -= distance/@mileage.to_f
+      update_position(distance)
+      "You have #{@gas_current} gallons of gas left."
+    end
+  end
+
+  def to_s
+    "I am a #{@color} #{@make} #{model}. I am at #{@position}. I have #{@gas_current} gallons of fuel remaining."
+  end
+
+end
+
+class Automobile < Vehicle
+  include GasPowered  
+end
+
+class Car < Automobile  
 end
 
 class Truck < Automobile
 end
-
