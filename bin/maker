@@ -1,0 +1,52 @@
+#!/usr/local/bin/ruby
+
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '../lib'))
+
+require 'vehicle'
+require 'person'
+
+puts 'Please list name of vehicle owner.'
+name_in = gets.chomp
+b = Person.new name_in
+vehicle_count = 00
+
+loop do 
+  puts "This is vehicle number #{vehicle_count+1}."
+  
+  easypallette = {'G' => 'Green', 'B' => 'Blue', 'R' => 'Red'} 
+  puts 'What is the make of the vehicle? Input X to quit.'
+  make = gets.chomp
+  break if make == 'X' || make == ''  #Double-equal for comparison! 
+  puts 'What is the model of the vehicle?'
+  model = gets.chomp
+  puts 'What color is the vehicle?'
+  color = gets.chomp
+  color = easypallette[color.upcase] || color
+  
+  #  case color.upcase
+  #  when 'R'
+  #    color = 'Red'
+  #  when 'B'
+  #    color = 'Blue'
+  #  when 'G'
+  #    color = 'Green'
+  #  end
+  #  
+  b.add_vehicle Car.new(color, make, model)
+  vehicle_count += 1
+end
+
+puts "You have #{vehicle_count} vehicles. Here they are:"
+
+#x = 0 
+#loop do                            **********************
+#  puts b.vehicles[x]                   Equals b.vehicles.each do 
+#  x += 1                           **********************
+
+#  break if x == vehicle_count + 1
+#end
+
+b.vehicles.each do |output_vehicle|
+  puts output_vehicle
+end
+
