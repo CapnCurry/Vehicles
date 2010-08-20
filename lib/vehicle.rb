@@ -3,7 +3,7 @@ class Vehicle
   DEGREES = {'N' => 0, 'E' => 90, 'S' => 180,'W' => 270}
   TURNS = {'R' => 90, 'L' => -90}
 
-  attr_accessor :color, :make, :model
+  attr_accessor :color, :make, :model, :heading
   
   def initialize(color, make, model)
     @color = color
@@ -39,6 +39,7 @@ class Vehicle
     else
       raise "Wrong way, Goldfarb!"
     end
+    @heading #Return current heading after turns have been made.
   end
 
   def degree?(direction)
@@ -51,13 +52,13 @@ class Vehicle
 
   def turn(direction)
     @heading += TURNS[direction[0].upcase]
-    normalize_heading!
+    normalize_heading! 
   end
 
   def normalize_heading!
     if @heading > 359
       @heading = @heading - 360
-    elsif @heading <= 0
+    elsif @heading < 0
       @heading = @heading + 360
     end
   end
