@@ -26,3 +26,27 @@
   http://ruby-doc.org/ruby-1.9/index.html
 
   (Click on "CSV" in the middle top frame).
+
+* PROJ: Better CLI (command line interface)
+
+  The HighLine gem/library provides an easy way to ask for input from
+  a user.
+
+  * [ ] Use HighLine's "choose" to make your selection menu(s)
+  * [ ] Use HighLine's "ask," etc instead of "gets"
+  * [ ] Display "errors" in red
+
+  Install it with:
+
+    sudo gem install highline
+
+  See http://highline.rubyforge.org for more information.
+
+  To see examples of HighLine being used, once you install the
+  library, find where your gems are stored (if you run the following
+  command, look for GEM PATHS):
+
+    gem env
+
+  Under the path you see, look for a "gems/highline-<version>"
+  subdirectory.  In it, you should find "examples/"
