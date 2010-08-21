@@ -4,14 +4,14 @@
    inventory, with different gas mileages and tank levels.  You would
   like to see a summary of your inventory, including:
 
-  * [ ] All vehicles ordered by fuel efficiency
-  * [ ] All vehicles ordered by the distance they could be driven with the
+  * [X] All vehicles ordered by fuel efficiency
+  * [X] All vehicles ordered by the distance they could be driven with the
     current gas tank level
-  * [ ] The combined amount of gallons it would take to fill up the entire
+  * [X] The combined amount of gallons it would take to fill up the entire
     inventory.
-  * [ ] A summary of how many of each make there are
-  * [ ] A summary of how may of each model (+ make) there are
-  * [ ] A summary of how many of each color there are
+  * [X] A summary of how many of each make there are
+  * [X] A summary of how may of each model (+ make) there are
+  * [X] A summary of how many of each color there are
 
   You should add one script in bin/ that prompts for which summary to
   display.
@@ -32,7 +32,7 @@
   The HighLine gem/library provides an easy way to ask for input from
   a user.
 
-  * [ ] Use HighLine's "choose" to make your selection menu(s)
+  * [X] Use HighLine's "choose" to make your selection menu(s)
   * [ ] Use HighLine's "ask," etc instead of "gets"
   * [ ] Display "errors" in red
 

@@ -7,7 +7,8 @@
 #Summary of how many of each Color
 require 'csv'
 require 'lib/vehicle'
-
+require 'rubygems'
+require 'highline/import'
 
 
 def fill_inventory inventory
@@ -86,32 +87,62 @@ def zombie_report inventory
 return report_results
 end
 
+highline=HighLine.new
+
+ft = HighLine::ColorScheme.new do |cs|
+        cs[:headline]        = [ :bold, :yellow, :on_black ]
+        cs[:horizontal_line] = [ :bold, :white, :on_blue]
+        cs[:even_row]        = [ :red ]
+        cs[:odd_row]         = [ :red ]
+     end
+
+
+HighLine.color_scheme = ft
+
+
+
 
 inventory = []
 fill_inventory inventory
+
+done=false
+until done == true do
+  choose do |menu|
+    menu.header = highline.color('Inventory management menu', :headline)
+    menu.prompt = "Selection?"
+    menu.choice('Color Report') { puts color_report inventory }
+    menu.choice('Make / Model Report') { puts make_model_report inventory }
+    menu.choice('Refuel Report') { puts refueling_report inventory }
+    menu.choice('Efficiency Report') { puts fuel_efficiency_report inventory }
+    menu.choice('Zombie Alert') { puts zombie_report inventory }
+    menu.choice('Exit') { done = true }
+  end
+end
+
+
 #inventory.each do |vehicle|
 #  p vehicle
 #end
 
 
-loop do 
-  puts "Menu:\n\n"
-  puts '1. Fuel-efficiency report'
-  puts '2. Refueling report'
-  puts '3. Make / Model report'
-  puts '4. Color report'
-  puts 'Z. Zombie Invasion Mode'
-  puts "\n"
-  puts 'X to Quit'
-  selection = gets
-  case selection[0].upcase
-  when '1' then puts fuel_efficiency_report inventory
-  when '2' then puts refueling_report inventory
-  when '3' then puts make_model_report inventory
-  when '4' then puts color_report inventory
-  when 'Z' then puts zombie_report inventory
-  when 'X' then break
-  end
-end
+#loop do 
+#  puts "Menu:\n\n"
+#  puts '1. Fuel-efficiency report'
+#  puts '2. Refueling report'
+#  puts '3. Make / Model report'
+#  puts '4. Color report'
+#  puts 'Z. Zombie Invasion Mode'
+#  puts "\n"
+#  puts 'X to Quit'
+#  selection = gets
+#  case selection[0].upcase
+#  when '1' then puts fuel_efficiency_report inventory
+#  when '2' then puts refueling_report inventory
+#  when '3' then puts make_model_report inventory
+#  when '4' then puts color_report inventory
+#  when 'Z' then puts zombie_report inventory
+#  when 'X' then break
+#  end
+#end
 
 

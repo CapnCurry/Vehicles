@@ -1,18 +1,17 @@
-
 * PROJ: Inventory summarizer
 
   You are a rental company, and have a number of cars and trucks in your
    inventory, with different gas mileages and tank levels.  You would
- like to see a summary of your inventory, including:
+  like to see a summary of your inventory, including:
 
   * [X] All vehicles ordered by fuel efficiency
-  * [ ] All vehicles ordered by the distance they could be driven with the
+  * [X] All vehicles ordered by the distance they could be driven with the
     current gas tank level
-  * [ ] The combined amount of gallons it would take to fill up the entire
+  * [X] The combined amount of gallons it would take to fill up the entire
     inventory.
-  * [ ] A summary of how many of each make there are
-  * [ ] A summary of how may of each model (+ make) there are
-  * [ ] A summary of how many of each color there are
+  * [X] A summary of how many of each make there are
+  * [X] A summary of how may of each model (+ make) there are
+  * [X] A summary of how many of each color there are
 
   You should add one script in bin/ that prompts for which summary to
   display.
@@ -27,3 +26,27 @@
   http://ruby-doc.org/ruby-1.9/index.html
 
   (Click on "CSV" in the middle top frame).
+
+* PROJ: Better CLI (command line interface)
+
+  The HighLine gem/library provides an easy way to ask for input from
+  a user.
+
+  * [X] Use HighLine's "choose" to make your selection menu(s)
+  * [X] Use HighLine's "ask," etc instead of "gets"
+  * [X] Display "errors" in red
+
+  Install it with:
+
+    sudo gem install highline
+
+  See http://highline.rubyforge.org for more information.
+
+  To see examples of HighLine being used, once you install the
+  library, find where your gems are stored (if you run the following
+  command, look for GEM PATHS):
+
+    gem env
+
+  Under the path you see, look for a "gems/highline-<version>"
+  subdirectory.  In it, you should find "examples/"
