@@ -3,7 +3,7 @@ class Vehicle
   DEGREES = {'N' => 0, 'E' => 90, 'S' => 180,'W' => 270}
   TURNS = {'R' => 90, 'L' => -90}
 
-  attr_accessor :color, :make, :model, :heading
+  attr_accessor :color, :make, :model 
   
   def initialize(color, make, model)
     @color = color
@@ -67,11 +67,17 @@ end
 
 module GasPowered
 
-  def initialize(*args)
-    @gas_current = 11
-    @gas_capacity = 11
-    @mileage = 22
-    super(*args)
+  def self.included(klass)
+    klass.instance_eval do
+      attr_accessor :mileage, :gas_capacity, :gas_current
+    end
+  end
+
+  def initialize(color, make, model, current, capacity, mileage)
+    @gas_current = current.to_f
+    @gas_capacity = capacity.to_f
+    @mileage = mileage.to_f
+    super(color, make, model)
   end
 
   def drive(distance)

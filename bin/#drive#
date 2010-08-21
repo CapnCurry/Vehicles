@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '../lib'))
+
+require 'vehicle'
+
+bronco = Car.new 'Blue', 'Ford', 'Mustang'
+
+bronco.set_heading 'S'
+bronco.drive 20
+bronco.set_heading 'west'
+bronco.drive 30
+bronco.set_heading 'left'
+bronco.drive 50
+puts bronco
